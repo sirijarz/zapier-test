@@ -35,7 +35,7 @@ exports.create = (req, res) => {
 
 // Find a single user with email
 exports.findOne = (req, res) => {
-   const email = req.body.email;
+   const email = req.params.email;
 
   User.find({"email": email})
      
