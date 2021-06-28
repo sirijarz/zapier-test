@@ -9,7 +9,8 @@ module.exports = app => {
   router.post("/apikey", users.create);
    // get that api key for that email
   router.get("/getapikey/:email", users.findOne);
-
+ 
+  router.get("/zapieruser/:email/:api_key", users.findOneValid)
   
   app.use("/integrations/zapier", router);
 };

@@ -1,6 +1,8 @@
 const db = require("../models");
 const User = db.users;
 const { v4: uuidv4 } = require('uuid');
+const {validate: uuidValidate} = require('uuid');
+// import { validate as uuidValidate } from 'uuid';
 
 // Create and Save a new User with api key
 exports.create = (req, res) => {
@@ -50,5 +52,29 @@ exports.findOne = (req, res) => {
         .send({ message: "Error retrieving api key for this email" + email });
     });
 };
+/////
+
+exports.findOneValid = (req, res) => {
+  const email = req.params.email;
+  const api_key = req.params.api_key;
+  if(uuidValidate(api_key)){
+
+  User.findOne({"email": email, "api_key": api_key})
+
+
+   .then(data => {
+     if (!data)
+       res.status(404).send({ message: "Not found api key with this email " + email });
+     else res.send(data);
+   })
+   .catch(err => {
+     res
+       .status(500)
+       .send({ message: "Error retrieving api key for this email" + email });
+   });
+  }
+};
+
+
 
 
