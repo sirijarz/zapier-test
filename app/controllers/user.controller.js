@@ -73,6 +73,9 @@ exports.findOneValid = (req, res) => {
        .send({ message: "Error retrieving api key for this email" + email });
    });
   }
+  else{
+    res.status(403).send({ message: "API KEY / Email ID invalid for this user: " + email });
+  }
 };
 
 
