@@ -80,12 +80,12 @@ exports.findOneValid = (req, res) => {
 
 exports.printData= (req, res) => {
   // Validate request
-  if (!req.body.data) {
+  if (!req.params.data) {
     res.status(400).send({ message: "Content can not be empty!" });
     return;
   }
 
-  const newdata = { data: req.body.data}
+  const newdata = { data: req.params.data}
 
   console.log(newdata.data)
   res.send(newdata);
