@@ -12,7 +12,7 @@ module.exports = app => {
  
   router.get("/zapieruser/:email/:api_key", users.findOneValid);
 
-  router.post("/printdata/:data", users.printData);
+  router.post("/printdata/:email", users.printData);
   
   app.use("/integrations/zapier", router);
 };
