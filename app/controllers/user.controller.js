@@ -78,6 +78,21 @@ exports.findOneValid = (req, res) => {
   }
 };
 
+exports.printData= (req, res) => {
+  // Validate request
+  if (!req.body.data) {
+    res.status(400).send({ message: "Content can not be empty!" });
+    return;
+  }
+
+  const newdata = { data: req.body.data}
+
+  console.log(newdata.data)
+  res.send(newdata);
+
+   
+
+};
 
 
 
