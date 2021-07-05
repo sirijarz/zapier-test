@@ -92,18 +92,18 @@ exports.printData= (req, res) => {
     res.status(400).send({ message: "Title can not be empty!" });
     return;
   }
-   if (!req.body.description) {
-    res.status(400).send({ message: "Desciption can not be empty!" });
-       return;
-     }
+  //  if (!req.body.description) {
+  //   res.status(400).send({ message: "Desciption can not be empty!" });
+  //      return;
+  //    }
   if (!req.body.dataType) {
     res.status(400).send({ message: "Data type can not be empty!" });
     return;
   }
-  if (!req.body.duration) {
-    res.status(400).send({ message: "Duration can not be empty!" });
-    return;
-  }
+  // if (!req.body.duration) {
+  //   res.status(400).send({ message: "Duration can not be empty!" });
+  //   return;
+  // }
 
   const data = { 
                  downloadUrl: req.body.downloadUrl,
