@@ -81,11 +81,32 @@ exports.findOneValid = (req, res) => {
 exports.printData= (req, res) => {
   // Validate request
   if (!req.body.downloadUrl) {
-    res.status(400).send({ message: "Content can not be empty!" });
+    res.status(400).send({ message: " Download URL can not be empty!" });
+    return;
+  }
+ if (!req.body.userId) {
+    res.status(400).send({ message: "User ID can not be empty!" });
+    return;
+  }
+  if (!req.body.title) {
+    res.status(400).send({ message: "Title can not be empty!" });
+    return;
+  }
+  if (!req.body.description) {
+    res.status(400).send({ message: "Desciption can not be empty!" });
+    return;
+  }
+  if (!req.body.dataType) {
+    res.status(400).send({ message: "Data type can not be empty!" });
     return;
   }
 
-  const data = { downloadUrl: req.body.downloadUrl}
+  const data = { 
+                 downloadUrl: req.body.downloadUrl,
+                 userId: req.body.userId,
+                 title: req.body.title,
+                 desription: req.body.description,
+                 dataType: req.body.dataType }
 
   console.log(data.downloadUrl)
   res.send(data);
