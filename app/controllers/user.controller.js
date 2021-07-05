@@ -92,12 +92,16 @@ exports.printData= (req, res) => {
     res.status(400).send({ message: "Title can not be empty!" });
     return;
   }
-  // if (!req.body.description) {
-  //   res.status(400).send({ message: "Desciption can not be empty!" });
-  //   return;
-  // }
+   if (!req.body.description) {
+    res.status(400).send({ message: "Desciption can not be empty!" });
+       return;
+     }
   if (!req.body.dataType) {
     res.status(400).send({ message: "Data type can not be empty!" });
+    return;
+  }
+  if (!req.body.duration) {
+    res.status(400).send({ message: "Duration can not be empty!" });
     return;
   }
 
@@ -106,7 +110,8 @@ exports.printData= (req, res) => {
                  userId: req.body.userId,
                  title: req.body.title,
                  desription: req.body.description,
-                 dataType: req.body.dataType }
+                 dataType: req.body.dataType,
+                 duration: req.body.duration }
 
   console.log(data.downloadUrl)
   res.send(data);
